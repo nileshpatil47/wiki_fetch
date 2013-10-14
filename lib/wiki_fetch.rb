@@ -6,10 +6,11 @@ class Wiki
 		@@agent = Mechanize.new
   end
 
-	def fetch(url)
+	def search(name, format = "json" )
+		url = "http://en.wikipedia.org/w/api.php?format=#{format}&action=query&prop=extracts&exsentences=10&titles=#{name}"
 		begin
 			page_data = @@agent.get url
-			page_data.body
+			return page_data.body
 		rescue => e
 			e.message
 		end
