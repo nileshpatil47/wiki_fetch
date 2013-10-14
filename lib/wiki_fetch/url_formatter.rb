@@ -1,3 +1,5 @@
+require 'wiki_fetch/global'
+
 module UrlFormatter
 	def self.create_url(options)
 		format = options[:format] || "json"
@@ -6,14 +8,14 @@ module UrlFormatter
 			query = options[:options][:action] || "query"
 			extracts = options[:options][:prop] || "extracts"
 			exsentences = (options[:options][:exsentences] || 10).to_i
-			return "#{$wiki_base_url}?format=#{format}&action=#{query}&prop=#{extracts}&exsentences=#{exsentences}&titles=#{options[:options][:name]}"  
+			return "#{$wiki_base_url}?format=#{format}&action=#{query}&prop=#{extracts}&exsentences=#{exsentences}&titles=#{options[:name]}"  
 		when "search_suggestions"
 			query = options[:options][:action] || "opensearch"
 			limit = (options[:options][:limit] || 10).to_i
 			namespace = (options[:options][:namespace] || 0).to_i
-		  return "#{$wiki_base_url}?action=#{query}&search=#{options[:options][:name]}&limit=#{limit}&namespace=#{namespace}&format=#{format}"
+		  return "#{$wiki_base_url}?action=#{query}&search=#{options[:name]}&limit=#{limit}&namespace=#{namespace}&format=#{format}"
 		else
 		  puts "You gave me -- I have no idea what to do with that."
 		end
 	end
-en
+end

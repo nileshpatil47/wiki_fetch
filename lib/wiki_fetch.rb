@@ -1,17 +1,18 @@
 require "wiki_fetch/version"
 require 'mechanize'
+require "wiki_fetch/url_formatter"
 
 class Wiki
 	def initialize()
 		@@agent = Mechanize.new
   end
 
-	def search_title(name, options)
+	def search_title(name, options = {})
 		url = UrlFormatter.create_url({:name => name, :method => "search_title", :options => options})
 		fetch_url(url)
 	end
 	
-	def search_suggestions(name, options)
+	def search_suggestions(name, options = {})
 		url = UrlFormatter.create_url({:name => name, :method => "search_suggestions", :options => options})
 		fetch_url(url)
 	end
