@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = WikiFetch::VERSION
   spec.authors       = ["nileshpatil47"]
   spec.email         = ["nileshpatil47@yahoo.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{wiki data fetch gem}
+  spec.summary       = %q{It can be used as wiki text and link wiki_fetch}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -19,5 +19,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "mechanize", "~> 2.7.2"
   spec.add_development_dependency "rake"
 end
