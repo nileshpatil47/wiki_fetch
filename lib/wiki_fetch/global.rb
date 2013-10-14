@@ -1,1 +1,1 @@
-$wiki_base_url = "http://en.wikipedia.org/w/api.php?"
+$wiki_base_url = "http://en.wikipedia.org/w/api.php"

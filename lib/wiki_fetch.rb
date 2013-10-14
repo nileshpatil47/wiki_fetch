@@ -6,18 +6,17 @@ class Wiki
 		@@agent = Mechanize.new
   end
 
-	def search_form_title(name, format = "json" )
-		url = "http://en.wikipedia.org/w/api.php?format=#{format}&action=query&prop=extracts&exsentences=10&titles=#{name}"
-		begin
-			page_data = @@agent.get url
-			return page_data.body
-		rescue => e
-			e.message
-		end
+	def search_title(name, options)
+		url = UrlFormatter.create_url({:name => name, :method => "search_title", :options => options})
+		fetch_url(url)
 	end
 	
-	def suggestions(name)
-		url = "http://en.wikipedia.org/w/api.php?action=opensearch&search=#{name}&limit=15&namespace=0&format=json"
+	def search_suggestions(name, options)
+		url = UrlFormatter.create_url({:name => name, :method => "search_suggestions", :options => options})
+		fetch_url(url)
+	end
+
+	def fetch_url(url)
 		begin
 			page_data = @@agent.get url
 			return page_data.body
