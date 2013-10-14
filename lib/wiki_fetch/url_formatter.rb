@@ -6,9 +6,9 @@ module UrlFormatter
 		case options[:method]
 		when "search_title"
 			query = options[:options][:action] || "query"
-			extracts = options[:options][:prop] || "extracts"
-			exsentences = (options[:options][:exsentences] || 10).to_i
-			return "#{$wiki_base_url}?format=#{format}&action=#{query}&prop=#{extracts}&exsentences=#{exsentences}&titles=#{options[:name]}"  
+			prop = options[:options][:prop] || "revisions"
+			rvprop = options[:options][:rvprop] || "content" 
+			return "#{$wiki_base_url}?format=#{format}&action=#{query}&titles=#{options[:name]}&prop=#{prop}&rvprop=#{rvprop}"  
 		when "search_suggestions"
 			query = options[:options][:action] || "opensearch"
 			limit = (options[:options][:limit] || 10).to_i
